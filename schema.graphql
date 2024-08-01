@@ -1,0 +1,105 @@
+type Approval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Transfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type boughtCreditCreated @entity(immutable: true) {
+  id: Bytes!
+  proposalId: BigInt! # uint256
+  estAmount: BigInt! # uint256
+  ipfsHash: String! # string
+  timestamp: BigInt! # uint256
+  buyerAdd: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type buyerRegistered @entity(immutable: true) {
+  id: Bytes!
+  buyerId: BigInt! # uint256
+  compName: String! # string
+  regPin: BigInt! # uint256
+  category: String! # string
+  description: String! # string
+  buyerAdd: Bytes! # address
+  email: String! # string
+  phoneNo: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type minted @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type offsetProposalApproved @entity(immutable: true) {
+  id: Bytes!
+  proposalId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type offsetProposalCreated @entity(immutable: true) {
+  id: Bytes!
+  proposalId: BigInt! # uint256
+  category: String! # string
+  description: String! # string
+  estAmount: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  ipfsHash: String! # string
+  offsetterAdd: Bytes! # address
+  approved: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type offsetterRegistered @entity(immutable: true) {
+  id: Bytes!
+  offsetterId: BigInt! # uint256
+  compName: String! # string
+  regPin: BigInt! # uint256
+  category: String! # string
+  offSetCat: String! # string
+  description: String! # string
+  offsetterAdd: Bytes! # address
+  email: String! # string
+  phoneNo: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type validatorRegistered @entity(immutable: true) {
+  id: Bytes!
+  validatorId: BigInt! # uint256
+  name: String! # string
+  regNo: BigInt! # uint256
+  validatorAdd: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

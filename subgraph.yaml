@@ -1,0 +1,50 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Zenzone
+    network: celo-alfajores
+    source:
+      address: "0x992810B6Ee63717a9C0295717754F46D22e29a63"
+      abi: Zenzone
+      startBlock: 25335183
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Transfer
+        - boughtCreditCreated
+        - buyerRegistered
+        - minted
+        - offsetProposalApproved
+        - offsetProposalCreated
+        - offsetterRegistered
+        - validatorRegistered
+      abis:
+        - name: Zenzone
+          file: ./abis/Zenzone.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: boughtCreditCreated(uint256,uint256,string,uint256,address)
+          handler: handleboughtCreditCreated
+        - event: buyerRegistered(uint256,string,uint256,string,string,address,string,uint256)
+          handler: handlebuyerRegistered
+        - event: minted(address,uint256)
+          handler: handleminted
+        - event: offsetProposalApproved(uint256)
+          handler: handleoffsetProposalApproved
+        - event: offsetProposalCreated(uint256,string,string,uint256,uint256,string,address,bool)
+          handler: handleoffsetProposalCreated
+        - event: offsetterRegistered(uint256,string,uint256,string,string,string,address,string,uint256)
+          handler: handleoffsetterRegistered
+        - event: validatorRegistered(uint256,string,uint256,address)
+          handler: handlevalidatorRegistered
+      file: ./src/zenzone.ts
